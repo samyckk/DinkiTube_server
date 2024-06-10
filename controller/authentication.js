@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import DYuser from '../models/user.js';
+import DYuser from '../models/User.js';
 import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
