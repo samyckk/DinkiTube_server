@@ -40,7 +40,7 @@ app.get('/hey', (req, res) => {
     res.send("Hello world");
 });
 
-const PORT = process.env.PORT || 8000;
+const PORT = 8000;
 
 console.log(".");
 
