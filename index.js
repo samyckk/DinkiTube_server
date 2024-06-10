@@ -17,7 +17,7 @@ dotenv.config();
 
 const connect = ()=>{
 
-    mongoose.connect(process.env.MONGODB).then(()=>{
+    mongoose.connect("mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app").then(()=>{
         console.log('Database connected successfully');
     }).catch( (err) => {
         console.error(err, 'cant connect to Database');
