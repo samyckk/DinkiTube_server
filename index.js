@@ -15,12 +15,14 @@ app.use(cors());
 
 dotenv.config();
 
-const connect = ()=>{
-
-    mongoose.connect("mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app").then(()=>{
+const connect = () => {
+    mongoose.connect(process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
         console.log('Database connected successfully');
-    }).catch( (err) => {
-        console.error(err, 'cant connect to Database');
+    }).catch(err => {
+        console.error('Cannot connect to database:', err);
     });
 }
 
