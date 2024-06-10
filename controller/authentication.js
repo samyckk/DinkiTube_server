@@ -62,7 +62,7 @@ export const googleAuth = async (req, res) => {
 
             res.cookie("access_token", token, {
                 httpOnly: true,
-                // secure: true // Uncomment this only if you're serving over HTTPS
+                secure: true // Uncomment this only if you're serving over HTTPS
             }).status(200).json(user);
         } else {
             const temp = new DYuser({
@@ -76,7 +76,7 @@ export const googleAuth = async (req, res) => {
             res.cookie("access_token", token, {
                 httpOnly: true,
                 sameSite: 'None', // Add this line
-                // secure: true // Uncomment this only if you're serving over HTTPS
+                secure: true // Uncomment this only if you're serving over HTTPS
             }).status(200).json(saveUser);
         }
     } catch (err) {
