@@ -33,6 +33,10 @@ app.use('/api/videos', videoRoute);
 app.use('/api/comments', commentRoute);
 app.use('/api/auth', authRoute);
 
+app.get('/', (req, res) => {
+    res.send("Hello world");
+});
+
 const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, ()=>{
