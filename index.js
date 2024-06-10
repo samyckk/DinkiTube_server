@@ -33,7 +33,7 @@ app.use('/api/videos', videoRoute);
 app.use('/api/comments', commentRoute);
 app.use('/api/auth', authRoute);
 
-app.get('/', (req, res) => {
+app.get('/hey', (req, res) => {
     res.send("Hello world");
 });
 
