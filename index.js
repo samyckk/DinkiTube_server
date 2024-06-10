@@ -16,6 +16,7 @@ app.use(cors());
 dotenv.config();
 
 const connect = () => {
+    console.log("checking");
     mongoose.connect(process.env.MONGODB, {
         useNewUrlParser: true,
         useUnifiedTopology: true
