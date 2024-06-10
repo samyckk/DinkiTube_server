@@ -79,7 +79,7 @@ export const addView = async(req, res) => {
 
 export const trending = async (req, res) => {
     try{
-        // const videos = await DYvideo.find().sort({views: -1});
+        const videos = await DYvideo.find();
         return res.send("sup dude");
     }
     catch(err){
