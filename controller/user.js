@@ -1,5 +1,5 @@
 import express from 'express';
-import DYuser from '../models/User.js';
+import DYuser from '../models/userModel.js';
 
 export const updateUser = async(req,res)=>{
     if(req.params.id === req.user.id){
