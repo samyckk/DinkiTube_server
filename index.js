@@ -12,7 +12,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(cors({
-    origin: 'dinki-tube-server-cn1loxrln-samyckks-projects.vercel.app', // Use the client origin from environment variables
+    origin: 'https://dinki-tube-server.vercel.app', // Use the client origin from environment variables
     credentials: true // Allow credentials (cookies) to be sent
 }));
 
