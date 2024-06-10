@@ -11,10 +11,7 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(cors({
-    origin: 'https://dinki-tube-server.vercel.app', // Use the client origin from environment variables
-    credentials: true // Allow credentials (cookies) to be sent
-}));
+app.use(cors());
 
 dotenv.config();
 
