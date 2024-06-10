@@ -1,5 +1,5 @@
 import DYvideo from "../models/Video.js"
-import DYuser from "../models/user.js"
+import DYuser from "../models/User.js"
 
 export const addVideo = async (req,res)=>{
     const newVideo = new DYvideo(req.body);
