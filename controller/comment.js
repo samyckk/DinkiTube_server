@@ -1,5 +1,5 @@
 import DYvideo from "../models/Video.js";
-import DYuser from "../models/User.js";
+import DYuser from "../models/userModel.js";
 import DYcomments from "../models/Comment.js";
 import { response } from "express";
 
