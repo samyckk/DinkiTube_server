@@ -42,7 +42,10 @@ app.get('/hey', (req, res) => {
 
 const PORT = process.env.PORT || 8000;
 
+console.log(".");
+
 app.listen(PORT, ()=>{
+    console.log("...");
     connect();
     console.log("connected to server!");
 })
