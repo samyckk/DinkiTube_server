@@ -79,8 +79,8 @@ export const addView = async(req, res) => {
 
 export const trending = async (req, res) => {
     try{
-        const videos = await DYvideo.find().sort({views: -1});
-        return res.status(200).json(videos);
+        // const videos = await DYvideo.find().sort({views: -1});
+        return res.send("sup dude");
     }
     catch(err){
         return res.status(500).json("error in fetching trending");
