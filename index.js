@@ -49,4 +49,4 @@ app.listen(PORT, ()=>{
     console.log("connected to server!");
 });
 
-connect();
+connection();
