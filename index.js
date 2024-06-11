@@ -17,7 +17,7 @@ dotenv.config();
 
 const connect = () => {
     console.log("checking");
-    mongoose.connect("", {
+    mongoose.connect("mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
