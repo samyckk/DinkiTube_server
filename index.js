@@ -34,6 +34,8 @@ app.use(cookieParser());
 
 app.use(express.json());
 
+app.set('trust proxy', 1);
+
 app.use('/api/users', userRoute);
 app.use('/api/videos', videoRoute);
 app.use('/api/comments', commentRoute);
