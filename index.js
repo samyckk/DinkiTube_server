@@ -15,16 +15,16 @@ app.use(cors());
 
 dotenv.config();
 
-const connect = async() => {
-    console.log("checking");
-    await mongoose.connect("mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app", {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }).then(() => {
-        console.log('Database connected successfully');
-    }).catch(err => {
-        console.error('Cannot connect to database:', err);
-    });
+const connection = async () =>{
+    const URL = `mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app`
+    try {
+        console.log("trying to connect to mongoose");
+        await mongoose.connect(URL);
+        console.log("Connect Succcessfully to Database");
+    } catch (error) {
+        console.log("Error connecting to database", error);
+    }
+
 }
 
 app.use(cookieParser());
@@ -46,6 +46,7 @@ console.log(".");
 
 app.listen(PORT, ()=>{
     console.log("...");
-    connect();
     console.log("connected to server!");
-})
+});
+
+connect();
