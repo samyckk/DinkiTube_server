@@ -17,7 +17,7 @@ dotenv.config();
 
 const connect = () => {
     console.log("checking");
-    mongoose.connect(process.env.MONGODB, {
+    mongoose.connect("", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
