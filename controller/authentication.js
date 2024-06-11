@@ -4,55 +4,47 @@ import bcrypt from 'bcrypt';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
-export const signup = async(req, res)=>{
-    try{
-        console.log(req.body);
+dotenv.config();
+
+export const signup = async (req, res) => {
+    try {
         const hashPass = await bcrypt.hashSync(req.body.password, 8);
         const newUser = new DYuser(req.body);
         newUser.password = hashPass;
-        console.log("saving new user");
         await newUser.save();
-        console.log(newUser);
 
         return res.status(202).json({ message: "User created successfully" });
-    }
-    catch(err){
+    } catch (err) {
         console.log(err);
         return res.status(500).json({ error: "Internal Server Error" });
-    };
-    
-}
+    }
+};
 
-export const signin = async(req, res)=>{
-    try{
-        const user = await DYuser.findOne({name: req.body.name});
+export const signin = async (req, res) => {
+    try {
+        const user = await DYuser.findOne({ name: req.body.name });
 
-        if(!user){
-            console.log("user not found");
-            return res.status(404).json({ message: "user not found" });
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
         }
 
         const check = await bcrypt.compare(req.body.password, user.password);
-        if(check){
-            console.log("password matched");
-        
-            const token = jwt.sign({id: user._id}, process.env.JWT_KEY);   
+        if (check) {
+            const token = jwt.sign({ id: user._id }, process.env.JWT_KEY);
 
             res.cookie("access_token", token, {
-                httpOnly: true
+                httpOnly: true,
+                secure: true, // Ensure secure flag is true
+                sameSite: 'None' // Add this line for cross-site cookies
             }).status(200).json(user);
+        } else {
+            return res.status(404).json({ message: "Password not matched" });
         }
-        else{
-            console.log("password not matched");
-            return res.status(404).json({ message: "password not matched"});
-        }
-    }
-    catch(err){
+    } catch (err) {
         console.log(err);
         return res.status(500).json({ error: "Signin Failed" });
     }
-}
-
+};
 
 export const googleAuth = async (req, res) => {
     try {
@@ -62,7 +54,8 @@ export const googleAuth = async (req, res) => {
 
             res.cookie("access_token", token, {
                 httpOnly: true,
-                secure: true // Uncomment this only if you're serving over HTTPS
+                secure: true, // Ensure secure flag is true
+                sameSite: 'None' // Add this line for cross-site cookies
             }).status(200).json(user);
         } else {
             const temp = new DYuser({
@@ -75,11 +68,12 @@ export const googleAuth = async (req, res) => {
 
             res.cookie("access_token", token, {
                 httpOnly: true,
-                sameSite: 'None', // Add this line
-                secure: true // Uncomment this only if you're serving over HTTPS
+                secure: true, // Ensure secure flag is true
+                sameSite: 'None' // Add this line for cross-site cookies
             }).status(200).json(saveUser);
         }
     } catch (err) {
         console.log(err);
+        return res.status(500).json({ error: "Google Authentication Failed" });
     }
 };
