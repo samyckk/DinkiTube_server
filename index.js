@@ -15,9 +15,9 @@ app.use(cors());
 
 dotenv.config();
 
-const connect = () => {
+const connect = async() => {
     console.log("checking");
-    mongoose.connect("mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app", {
+    await mongoose.connect("mongodb+srv://samyck:1234@blog-app.ywqvnes.mongodb.net/?retryWrites=true&w=majority&appName=blog-app", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
